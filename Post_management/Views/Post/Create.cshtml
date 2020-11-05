@@ -1,0 +1,68 @@
+﻿@model Post_management.ViewModels.PostCreateVM
+
+<form method="post" enctype="multipart/form-data" asp-action="Create">
+    <div class="border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-info">Add Post</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Posts.Title"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Posts.Title" class="form-control" />
+                        <span asp-validation-for="Posts.Title" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Posts.Content"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Posts.Content" class="form-control" />
+                        <span asp-validation-for="Posts.Content" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Posts.CategoriesId"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Posts.CategoriesId" asp-items="@Model.CategoriesSelectList" class="form-control">
+                            <option disabled selected>Vui lòng chọn Category</option>
+                        </select>
+                        <span asp-validation-for="Posts.CategoriesId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Posts.TagsId"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Posts.TagsId" asp-items="@Model.TagsSelectList" class="form-control">
+                            <option disabled selected>Vui lòng chọn Tags</option>
+                        </select>
+                        <span asp-validation-for="Posts.TagsId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col">
+                        <input type="submit" value="Create" class="btn btn-info" onclick="return validateInput()" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
